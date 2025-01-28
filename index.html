@@ -4,102 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>to-do-list & clock</title>
-    <style>
-      body {
-        background: #8aaae5;
-        /* height: 50em; */
-      }
-      .container {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-      }
-      form {
-        background-color: #8aaae5;
-      }
-      input,
-      button {
-        padding: 5px 20px;
-      }
-      h2 {
-        padding-left: 3em;
-        color: aliceblue;
-      }
-      ul {
-        padding: 0px;
-        margin: 0px;
-      }
-      li {
-        border: 1px solid black;
-        list-style-type: none;
-        padding: 6px 12px;
-        margin: 8px 0px;
-        border-radius: 2px;
-        background-color: aliceblue;
-      }
-      span {
-        margin-left: 2px;
-        cursor: pointer;
-        margin: 1px;
-        padding: 7px;
-      }
-      .container1 {
-        display: flex;
-        justify-content: center;
-      }
-      #icon-container {
-        margin-top: 10px;
-      }
-      /* clock  css */
-
-      figure {
-        display: flex;
-        justify-content: center;
-        position: relative;
-        /* height: 300px;  */
-      }
-
-      #second {
-        background: aliceblue;
-        width: 2px;
-        height: 8em;
-        position: absolute;
-        bottom: 251px;
-        right: 712px;
-        transform-origin: bottom center;
-      }
-
-      #minute {
-        background: aliceblue;
-        width: 4px;
-        height: 6em;
-        position: absolute;
-        bottom: 251px;
-        right: 713px;
-        transform-origin: bottom center;
-      }
-
-      #hour {
-        background: aliceblue;
-        width: 6px;
-        height: 4em;
-        position: absolute;
-        bottom: 251px;
-        right: 712px;
-        transform-origin: bottom center;
-      }
-
-      .point {
-        width: 10px;
-        height: 10px;
-        background: aliceblue;
-        border-radius: 50%;
-        position: absolute;
-        bottom: 245px;
-        right: 704px;
-        transform: translateX(-50%);
-      }
-    </style>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div class="container">
@@ -121,58 +26,8 @@
       <div id="minute"></div>
       <div id="second"></div>
     </figure>
-    <script>
-      let input = document.querySelector("input");
-      input.style.background = " aliceblue";
-      let button = document.querySelector("button");
-      let ul = document.querySelector("ul");
 
-      function addelment(e) {
-        e.preventDefault();
-
-        if (input.value == "") {
-          alert("please Add  data ");
-        } else {
-          let li = document.createElement("li");
-          li.innerHTML = input.value;
-
-          let del = document.createElement("span");
-          del.style.marginLeft = "10em";
-          del.innerHTML = `<ion-icon name="trash-outline"></ion-icon>`;
-          li.appendChild(del);
-
-          del.addEventListener("click", () => {
-            ul.removeChild(li);
-          });
-
-          let mod = document.createElement("span");
-          mod.innerHTML = `<ion-icon name="create-outline"></ion-icon>`;
-          li.appendChild(mod);
-
-          mod.addEventListener("click", () => {
-            input.value = li.textContent.replace("", "");
-            ul.removeChild(li);
-          });
-          ul.appendChild(li);
-        }
-        input.value = "";
-      }
-
-      button.addEventListener("click", addelment);
-
-      setInterval(() => {
-        let d = new Date();
-        let sec = d.getSeconds() * 6;
-        let min = d.getMinutes() * 6 + d.getSeconds() * 0.1;
-        let hou = (d.getHours() % 12) * 30 + d.getMinutes() * 0.5;
-        document.getElementById("second").style.transform =
-          "rotate(" + sec + "deg)";
-        document.getElementById("minute").style.transform =
-          "rotate(" + min + "deg)";
-        document.getElementById("hour").style.transform =
-          "rotate(" + hou + "deg)";
-      }, 1000);
-    </script>
+    <script src="./script.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
